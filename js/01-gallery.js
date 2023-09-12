@@ -7,15 +7,15 @@ function createGallery(galleryItems) {
   return galleryItems
     .map(({ original, preview, description }) => {
       return `<li class="gallery__item">
-  <a class="gallery__link" href="${original}">
-    <img
-      class="gallery__image"
-      src="${preview}"
-      data-source="${original}"
-      alt="${description}"
-    />
-  </a>
-</li>`;
+        <a class="gallery__link" href="${original}">
+          <img
+            class="gallery__image"
+            src="${preview}"
+            data-source="${original}"
+            alt="${description}"
+          />
+        </a>
+      </li>`;
     })
     .join("");
 }
@@ -25,9 +25,11 @@ galleryContainer.addEventListener("click", selectGalleryEl);
 
 function selectGalleryEl(e) {
   e.preventDefault();
+
   if (e.target.nodeName !== "IMG") {
     return;
   }
+
   const instance = basicLightbox.create(`<img src="${e.target.dataset.source}">`, {
     onShow: () => {
       window.addEventListener("keydown", onKeyEsc);
